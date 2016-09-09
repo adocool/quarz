@@ -1,0 +1,15 @@
+[2016-09-09 15:07:41] [ERROR main] [QuartzManager.start(48)] Quartz scheduler start error
+org.quartz.SchedulerException: Properties file: 'config/quartz.properties' could not be read. [See nested exception: java.io.FileNotFoundException: config\quartz.properties (系统找不到指定的文件。)]
+	at org.quartz.impl.StdSchedulerFactory.initialize(StdSchedulerFactory.java:534)
+	at org.quartz.impl.StdSchedulerFactory.<init>(StdSchedulerFactory.java:338)
+	at quarz.QuartzManager.start(QuartzManager.java:43)
+	at quarz.QuartzManager.main(QuartzManager.java:120)
+Caused by: java.io.FileNotFoundException: config\quartz.properties (系统找不到指定的文件。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at org.quartz.impl.StdSchedulerFactory.initialize(StdSchedulerFactory.java:529)
+	... 3 more
+[2016-09-09 15:09:07] [WARN main] [QuartzManager.addScheJob(114)] group.quarz.job.HourJob@49a9542c has been scheduled to run at: Fri Sep 09 16:00:00 CST 2016 and repeat based on expression: 0 0 * * * ?
+[2016-09-09 15:09:07] [WARN main] [QuartzManager.addScheJob(114)] group.quarz.job.Morning4HourJob@72d69a74 has been scheduled to run at: Sat Sep 10 04:00:00 CST 2016 and repeat based on expression: 0 0 4 * * ?
+[2016-09-09 15:09:07] [WARN main] [QuartzManager.addScheJob(114)] group.quarz.job.ZeroJob@67367092 has been scheduled to run at: Sat Sep 10 00:00:00 CST 2016 and repeat based on expression: 0 0 0 * * ?

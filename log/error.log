@@ -1,0 +1,12 @@
+[2016-09-09 15:07:41] [ERROR main] [QuartzManager.start(48)] Quartz scheduler start error
+org.quartz.SchedulerException: Properties file: 'config/quartz.properties' could not be read. [See nested exception: java.io.FileNotFoundException: config\quartz.properties (系统找不到指定的文件。)]
+	at org.quartz.impl.StdSchedulerFactory.initialize(StdSchedulerFactory.java:534)
+	at org.quartz.impl.StdSchedulerFactory.<init>(StdSchedulerFactory.java:338)
+	at quarz.QuartzManager.start(QuartzManager.java:43)
+	at quarz.QuartzManager.main(QuartzManager.java:120)
+Caused by: java.io.FileNotFoundException: config\quartz.properties (系统找不到指定的文件。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at org.quartz.impl.StdSchedulerFactory.initialize(StdSchedulerFactory.java:529)
+	... 3 more

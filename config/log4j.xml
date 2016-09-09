@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="ALL" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] [%p %t] [%C{1}.%M(%L)] %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="FileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<!-- 这里设置日志输出的绝对路径，如果设置相对路径，日志会生成在tomcat目录的相对路径里 -->
+		<!-- <param name="File" value="../logs/gameserver.log" /> -->
+		<param name="File" value="./log/gameserver.log" />
+		<param name="Threshold" value="ALL" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<param name="BufferedIO" value="false" />
+		<!-- 8K为一个写单元 -->
+		<param name="BufferSize" value="8192" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] [%p %t] [%C{1}.%M(%L)] %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="ErrorAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<!-- 这里设置日志输出的绝对路径，如果设置相对路径，日志会生成在tomcat目录的相对路径里 -->
+		<param name="File" value="./log/error.log" />
+		<param name="Threshold" value="ERROR" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<param name="BufferedIO" value="false" />
+		<!-- 8K为一个写单元 -->
+		<param name="BufferSize" value="8192" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] [%p %t] [%C{1}.%M(%L)] %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="WarnAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<!-- 这里设置日志输出的绝对路径，如果设置相对路径，日志会生成在tomcat目录的相对路径里 -->
+		<param name="File" value="./log/warn.log" />
+		<param name="Threshold" value="WARN" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<param name="BufferedIO" value="false" />
+		<!-- 8K为一个写单元 -->
+		<param name="BufferSize" value="8192" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] [%p %t] [%C{1}.%M(%L)] %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="org.quartz" additivity="true">
+		<level value="warn" />
+	</logger>
+
+	<root>
+		<level value="info" />
+		<!-- 注:部署时,只用 FileAppender 开发时只用Console -->
+		<appender-ref ref="CONSOLE" /> <!-- -->
+		<!-- 注:部署时,只用 FileAppender 开发时只用Console -->
+		<appender-ref ref="FileAppender" />
+		<appender-ref ref="ErrorAppender" />
+		<appender-ref ref="WarnAppender" />
+	</root>
+
+</log4j:configuration>
+
